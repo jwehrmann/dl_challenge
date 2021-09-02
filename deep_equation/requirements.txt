@@ -1,0 +1,4 @@
+torch==1.8.1
+tqdm==4.58.0
+pytest
+Pillow
