@@ -1,6 +1,8 @@
 # Deep Equation Challenge
 
-Pacote com a interface padrão para a entrega. 
+Package with the submission interface. It has a RandomModel so you can see the expected inputs and outputs. Also, it has a test to validate the students implementation.
+
+The package is pip-installable, it is very easy to update it and implement the predictor for the student best model trained. 
 
 ## Requirements
 
@@ -36,3 +38,8 @@ To test only the model implemented by the student:
 ```
 pytest tests/ -k test_student -s
 ```
+
+
+## Note
+
+The `model.py` and `train.py` files are not necessary for the submission, though, the student can use those files (and create other ones, if needed) to run everything inside this package. 
