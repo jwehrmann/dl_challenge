@@ -1,11 +1,12 @@
 # Desafio da Disciplina de Aprendizado Profundo
 
-A entrega desse trabalho é opcional, embora altamente recomendada, e pode garantir ao aluno até 1 ponto extra na nota da prova.
+A entrega desse trabalho é opcional, embora **altamente recomendada**, e pode garantir ao aluno até 1 ponto extra na nota da prova.
 
 ## Intro 
 
-O desafio consiste em implementar e treinar uma Rede Neural capaz de realizar operações matemáticas usando imagens de dígitos como entrada. Dessa forma, a rede deverá receber a imagem de um número A (entre 0 e 9), a imagem de um número B (entre 0 e 9), uma operação matemática (soma = '+', subtração = '-', multiplicação = '*', divisão = '/'), e prover a resposta da operação como saída. Por exemplo:
+O desafio consiste em implementar e treinar uma Rede Neural capaz de realizar operações matemáticas usando imagens de dígitos como entrada. Dessa forma, a rede deverá receber a imagem de um número A (entre 0 e 9), a imagem de um número B (entre 0 e 9), uma operação matemática (soma = `'+'`, subtração = `'-'`, multiplicação = `'*'`, divisão = `'/'`), e prover a resposta da operação como saída. 
 
+Por exemplo:
 
 | Image A| Image B | Operator | Resultado |
 | :--: | :--: | :--: | :--: |
@@ -22,37 +23,9 @@ Você pode treinar em qualquer framework, o importante é conseguir abrir o mode
 
 ## Interface de Entrega 
 
-Você deverá implementar um pacote pip-instalável do Python. Todos os alunos terão acesso a um pacote de exemplo (disponível e *forkable* no github), o qual contém um modelo aleatório que está com a sintaxe de acordo com a entrega. Dessa forma, você pode fazer um *fork* e editar o pacote para conter sua rede neural treinada. OBS: Todos os códigos submetidos serão instalados e avaliados em um test set separado, veja mais detalhes na seção de [Avaliação](#avaliação).
+Você deverá implementar um pacote pip-instalável Python. Todos os alunos terão acesso a um pacote de exemplo (disponível e *forkable* no github), o qual contém um modelo aleatório que está com a sintaxe de acordo com a entrega. Dessa forma, você pode fazer um *fork* e editar o pacote para conter sua rede neural treinada. OBS: Todos os códigos submetidos serão instalados e avaliados em um test set separado, veja mais detalhes na seção de [Avaliação](#avaliação).
 
-A interface do sistema deverá seguir o seguinte padrão (mais detalhes no readme do pacote `deep_equation`):
-
-```python
-from PIL import Image
-
-class BaseNet:
-
-    def predict(self, images_a: List, images_b: List, operators: List, device: str = 'cpu') -> List[float]:
-    """
-    Make a batch prediction considering a mathematical operator 
-    using digits from image_a and image_b.
-    Instances from iamges_a, images_b, and operators are aligned:
-        - images_a[0], images_b[0], operators[0] -> regards the 0-th input instance
-    Args: 
-        * images_a (List[PIL.Image]): List of RGB PIL Image of any size
-        * images_b (List[PIL.Image]): List of RGB PIL Image of any size
-        * operators (List[str]): List of mathematical operators from ['+', '-', '*', '/']
-            - invalid options must return `None`
-        * device: 'cpu' or 'cuda'
-    Return: 
-        * predicted_number (List[float]): the list of numbers representing the result of the equation from the inputs: 
-            [{digit from image_a} {operator} {digit from image_b}]
-    """
-        # do your magic
-        return predicted_number
-```
-
-A implementação do seu modelo (*predição do modelo treinado*) deverá ser implementada na classe `StudentModel`.
-
+A implementação do seu modelo (*predição do modelo treinado*) deverá seguir o `BaseModel` (`src/deep_equation/predictor.py`), e ser implementada na classe `StudentModel`. Veja os comandos `TODOS`. Você pode criar novos arquivos, classes, métodos, funções, mas **NÃO** pode alterar os métodos principais já existentes! Eles serão usados como API de comunicação para predição. 
 
 ## Restrições
 
@@ -60,18 +33,17 @@ A implementação do seu modelo (*predição do modelo treinado*) deverá ser im
 * Você **NÃO** pode usar um sistema de OCR para extrair o dígito. 
 * O sistema deve ser capaz de processar imagens RGB de qualquer tamanho (todo o pré-processamento é por sua conta!)
 * Você é responsável por coletar dados, otimizar os hiper-parâmetros, arquitetura, treinar o modelo, e disponibilizar o código bem como o modelo. 
-* A arquitetura tem que ser end-to-end: uma vez que a imagem entra na Rede Neural, a saída tem que ser o número resultante: isto é, a rede vai ter que aprender a extrair o valor semântico do número, mas também a realizar a operação desejada. 
+* A arquitetura tem que ser *end-to-end*: uma vez que a imagem entra na Rede Neural, a saída tem que ser o número resultante: isto é, a rede vai ter que aprender a extrair o valor semântico do número, mas também a realizar a operação desejada. 
 * É permitida uma etapa de pós-processamento para converter, processar, escalar valores da saída.
 * O modelo e o código implementados precisam passar por todos os testes unitários implementados no pacote de exemplo.
 
 ## Entrega
 
-A entrega deverá ser um `url` do repositório no github. Você pode salvar os pesos do modelo no próprio repositório se quiser, ou em um sistema de storage como google drive. Entretanto, lembre-se que o modelo deve estar disponível e ser carregado **automaticamente** pela classe de predição. 
+A entrega deverá ser um `url` do repositório no github. Você pode salvar os pesos do modelo no próprio repositório se quiser, ou em um sistema de storage como google drive. Entretanto, lembre-se que o modelo deve estar disponível e ser carregado **automaticamente** pela classe de predição.
 
 ## Avaliação
 
 O processo de avaliação é automático, e será efetuado da seguinte forma (com um script parecido com esse):
-
 
 > Inclusive o processo para você instalar o pacote base da entrega `deep_equation` é exatamente o mesmo. 
 
@@ -108,4 +80,3 @@ O aluno vai ter o desafio **zerado** em alguns casos, como:
 * Seja detectado plágio na implementação.
 * O sistema atingiu 0% de acurácia (o que é praticamente impossível, a menos que exista um erro na implementação).
 * O sistema demore mais que 30 minutos para fazer as predições do test set [timeout!]. Tente obter uma média de no máx 2s por instância.
-
