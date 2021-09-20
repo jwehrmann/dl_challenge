@@ -16,6 +16,9 @@ class TestRandomModel(unittest.TestCase):
         self.operators = ['+', '-', '*', '/', '*']
 
     def test_random_predictor(self):
+        """
+        Test random prediction outputs. 
+        """
         basenet = predictor.RandomModel()
 
         output = basenet.predict(
@@ -25,14 +28,13 @@ class TestRandomModel(unittest.TestCase):
             device='cpu',
         )
 
-        self.assertEqual(len(output), len(self.input_imgs_a))
-        self.assertEqual(len(self.input_imgs_b), len(self.input_imgs_a))
-        self.assertEqual(type(output), list)
-        self.assertEqual(type(float(output[0])), float)
-        
         self.validate_output(output)
     
     def test_student_predictor(self):
+        """
+        Test student prediction outputs. 
+        """
+
         basenet = predictor.StudentModel()
 
         output = basenet.predict(
@@ -45,6 +47,9 @@ class TestRandomModel(unittest.TestCase):
         self.validate_output(output)
 
     def validate_output(self, output):
+        """
+        Validate output format.
+        """
 
         # Make sure we got one prediction per input_sample
         self.assertEqual(len(output), len(self.input_imgs_a))
