@@ -27,6 +27,8 @@ Você deverá implementar um pacote pip-instalável Python. Todos os alunos ter�
 
 A implementação do seu modelo (*predição do modelo treinado*) deverá seguir o `BaseModel` (`src/deep_equation/predictor.py`), e ser implementada na classe `StudentModel`. Veja os comandos `TODOS`. Você pode criar novos arquivos, classes, métodos, funções, mas **NÃO** pode alterar os métodos principais já existentes! Eles serão usados como API de comunicação para predição. 
 
+> NOTA: altere o arquivo requirements.txt para conter todos os pacotes necessários para rodar seu código! 
+
 ## Restrições
 
 * Use o pacote de exemplo como base. 
