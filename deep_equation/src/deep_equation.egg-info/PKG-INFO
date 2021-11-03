@@ -1,0 +1,57 @@
+Metadata-Version: 2.1
+Name: deep-equation
+Version: 0.0.1
+Summary: Deep Equation Challenge
+Home-page: UNKNOWN
+Author: Wehrmann
+Author-email: wehrmann@puc-rio.br
+License: UNKNOWN
+Description: # Deep Equation Challenge
+        
+        Package with the submission interface. It has a RandomModel so you can see the expected inputs and outputs. Also, it has a test to validate the students implementation.
+        
+        The package is pip-installable, it is very easy to update it and implement the predictor for the student best model trained. 
+        
+        ## Requirements
+        
+        * python3.7 ou superior
+        
+        > Outros requisitos que seu modelo precisar deverÃ£o ser adicionados no arquivo `requirements.txt` com a versÃ£o correta!
+        
+        ## Install
+        
+        Abra um terminal e, estando no mesmo diretÃ³rio deste arquivo e do `setup.py`, rode:
+        
+        ```
+        pip install -e .
+        ```
+        
+        Pronto, vocÃª jÃ¡ tem o pacote instalado. 
+        
+        ## Test
+        
+        To test all models:
+        ```
+        pytest tests/
+        ```
+        
+        To test only the random model (example):
+        ```
+        pytest tests/ -k test_random -s
+        ```
+        > `-k` flag allows filtering some tests
+        > `-s` shows the print outputs, useful for debugging
+        
+        To test only the model implemented by the student:
+        ```
+        pytest tests/ -k test_student -s
+        ```
+        
+        
+        ## Note
+        
+        The `model.py` and `train.py` files are not necessary for the submission, though, the student can use those files (and create other ones, if needed) to run everything inside this package. 
+        
+Platform: UNKNOWN
+Requires-Python: >=3.7, <=3.9.5
+Description-Content-Type: text/markdown

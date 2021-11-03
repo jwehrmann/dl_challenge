@@ -1,0 +1,8 @@
+README.md
+setup.py
+src/deep_equation.egg-info/PKG-INFO
+src/deep_equation.egg-info/SOURCES.txt
+src/deep_equation.egg-info/dependency_links.txt
+src/deep_equation.egg-info/entry_points.txt
+src/deep_equation.egg-info/requires.txt
+src/deep_equation.egg-info/top_level.txt
